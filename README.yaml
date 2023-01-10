@@ -6,13 +6,13 @@
 
 
 # Name of this project
-name: Terraform AZURE VIRTUAL-NETWORK
+name: Terraform AZURE LOG-ANALYTICS
 
 # License of this project
 license: "APACHE"
 
 # Canonical GitHub repo
-github_repo: clouddrove/terraform-azure-virtual-network
+github_repo: clouddrove/terraform-azure-log-analytics
 
 # Badges to display
 badges:
@@ -25,7 +25,7 @@ badges:
 
 #  description of this project
 description: |-
-  Terraform module to create VIRTUAL-NETWORK resource on AZURE.
+  Terraform module to create LOG-ANALYTICS resource on AZURE.
 
 # extra content
 include:
@@ -37,16 +37,14 @@ usage: |-
   ### Simple Example
   Here is an example of how you can use this module in your inventory structure:
   ```hcl
-  module "virtual-network" {
-   source              = "clouddrove/virtual-network/azure"
-   environment         = "test"
-   label_order         = ["name", "environment"]
-   name                = "example"
-   resource_group_name = module.resource_group.resource_group_name
-   location            = module.resource_group.resource_group_location
-   address_space       = "10.0.0.0/16"
-   subnet_names        = ["subnet1"]
-   subnet_prefixes     = ["10.0.1.0/24"]
-   enable_ddos_pp      = true
+  module "log-analytics" {
+   source                           = "clouddrove/log-analytics/azure"
+   name                             = "app"
+   environment                      = "test"
+   label_order                      = ["name", "environment"]
+   create_log_analytics_workspace   = true
+   log_analytics_workspace_sku      = "PerGB2018"
+   resource_group_name              = module.resource_group.resource_group_name
+   log_analytics_workspace_location = module.resource_group.resource_group_location
    }
     ```

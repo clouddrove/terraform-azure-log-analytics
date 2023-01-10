@@ -3,22 +3,22 @@ provider "azurerm" {
 }
 
 module "resource_group" {
-  source = "git::https://github.com/clouddrove/terraform-azure-resource-group.git"
+  source  = "clouddrove/resource-group/azure"
+  version = "1.0.0"
 
-  name        = "testrg"
+  name        = "app-log"
   environment = "test"
-  label_order = ["environment",  "name"]
-
-  enabled  = true
-  location = "North Europe"
+  label_order = ["name", "environment"]
+  location    = "Canada Central"
 }
 
-module "log_analytics"  {
-  source               = "../"
-  name                 = "acctest-01"
-  location             = module.resource_group.resource_group_location
-  resource_group_name  = module.resource_group.resource_group_name
-  sku                  = "PerGB2018" 
-  retention_in_days    = 30
-
+module "log-analytics" {
+  source                           = "./../"
+  name                             = "app"
+  environment                      = "test"
+  label_order                      = ["name", "environment"]
+  create_log_analytics_workspace   = true
+  log_analytics_workspace_sku      = "PerGB2018"
+  resource_group_name              = module.resource_group.resource_group_name
+  log_analytics_workspace_location = module.resource_group.resource_group_location
 }

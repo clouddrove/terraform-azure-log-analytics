@@ -3,86 +3,113 @@
 #Description : Terraform label module variables.
 variable "name" {
   type        = string
-  default     = "test"
+  default     = ""
   description = "Name  (e.g. `app` or `cluster`)."
-}
-
-variable "application" {
-  type        = string
-  default     = ""
-  description = "Application (e.g. `cd` or `clouddrove`)."
-}
-
-variable "location" {
-  type        = string
-  default     = ""
 }
 
 variable "environment" {
   type        = string
-  default     = "example"
+  default     = ""
   description = "Environment (e.g. `prod`, `dev`, `staging`)."
 }
 
-variable "tags" {
-  type        = map(any)
-  default     = {}
-  description = "Additional tags (e.g. map(`BusinessUnit`,`XYZ`)."
-}
-
-variable "managedby" {
+variable "repository" {
   type        = string
-  default     = "anmol@clouddrove.com"
-  description = "ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'."
+  default     = ""
+  description = "Terraform current module repo"
 }
 
 variable "label_order" {
   type        = list(any)
   default     = []
-  description = "Label order, e.g. `name`,`application`."
+  description = "Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] ."
 }
-##comman
+
+variable "managedby" {
+  type        = string
+  default     = ""
+  description = "ManagedBy, eg ''."
+}
+
 variable "enabled" {
   type        = bool
-  default     = true
-  description = "Flag to control the module creation."
-}
-
-variable "log_analytics_enabled" {
-  type        = bool
+  description = "Set to false to prevent the module from creating any resources."
   default     = true
 }
 
-variable "repository" {
-  type    =string
-  default = ""  
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = "A map of tags to add to all resources"
+}
+variable "log_analytics_workspace_name" {
+  type        = string
+  description = "Name of the Log Analytics Workspace"
+  default     = "loganalytics"
+}
+
+variable "log_analytics_workspace_location" {
+  type        = string
+  description = "Location of the Workspace"
+  default     = "West Us"
 }
 
 variable "resource_group_name" {
   type        = string
   default     = ""
-  description = "The name of the resource group in which to create the virtual network."
+  description = "Resource group of deployment"
 }
 
-variable "key_name" {
+variable "log_analytics_workspace_sku" {
   type        = string
-  default     = ""
-  description = "Location where resource should be created."
+  default     = "PerGB2018"
+  description = "pecifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, CapacityReservation, and PerGB2018 (new Sku as of 2018-04-03). Defaults to PerGB2018"
+
 }
 
-# log_analytics
 
-
-variable "sku" {
-  type        = string
-  default     = ""
-  description = "sku type is like :- basic, free, etc "
+variable "email_receiver" {
+  type        = list(any)
+  default     = []
+  description = "One or more email_receiver blocks as defined below."
 }
 
+variable "scheduled_query_rules_alert" {
+  type        = any
+  default     = {}
+  description = "Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor."
+}
+
+variable "create_log_analytics_workspace" {
+  type        = bool
+  default     = false
+  description = "The Flag for Module Enable or Disabled if it will false it will take `existing_log_analytics_workspace`."
+}
+
+#variable "allow_resource_only_permissions" {
+#  type        = bool
+#  default     = true
+#  description = "Specifies if the log Analytics Workspace allow users accessing to data associated with resources they have permission to view, without permission to workspace. Defaults to true."
+#}
 variable "retention_in_days" {
+  type        = number
+  default     = null
+  description = "The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
+}
+variable "daily_quota_gb" {
   type        = string
-  default     = ""
-  description = "The retention in days be like 30 40"
+  default     = "-1"
+  description = "The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited) if omitted."
 }
 
-
+variable "internet_ingestion_enabled" {
+  type        = bool
+  default     = true
+  description = "Should the Log Analytics Workspace support ingestion over the Public Internet? Defaults to true."
+}
+variable "internet_query_enabled" {
+  type        = bool
+  default     = true
+  description = "Should the Log Analytics Workspace support querying over the Public Internet? Defaults to true."
+}
