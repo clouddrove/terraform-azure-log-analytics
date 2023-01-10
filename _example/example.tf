@@ -19,6 +19,9 @@ module "log-analytics" {
   label_order                      = ["name", "environment"]
   create_log_analytics_workspace   = true
   log_analytics_workspace_sku      = "PerGB2018"
+  daily_quota_gb                   = "-1"
+  internet_ingestion_enabled       = true
+  internet_query_enabled           = true
   resource_group_name              = module.resource_group.resource_group_name
   log_analytics_workspace_location = module.resource_group.resource_group_location
 }
