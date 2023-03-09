@@ -100,6 +100,7 @@ module "log-analytics" {
 
 | Name | Description |
 |------|-------------|
+| workspace\_customer\_id | n/a |
 | workspace\_id | n/a |
 
 
