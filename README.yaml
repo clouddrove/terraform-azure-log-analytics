@@ -46,5 +46,9 @@ usage: |-
    log_analytics_workspace_sku      = "PerGB2018"
    resource_group_name              = module.resource_group.resource_group_name
    log_analytics_workspace_location = module.resource_group.resource_group_location
+
+   #### enable diagnostic setting
+   diagnostic_setting_enable  = false
+   log_analytics_workspace_id = module.log-analytics.workspace_id
    }
     ```
