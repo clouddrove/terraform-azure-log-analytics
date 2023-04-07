@@ -61,14 +61,11 @@ module "log-analytics" {
  name                             = "app"
  environment                      = "test"
  label_order                      = ["name", "environment"]
- create_log_analytics_workspace   = true
- log_analytics_workspace_sku      = "PerGB2018"
  resource_group_name              = module.resource_group.resource_group_name
  log_analytics_workspace_location = module.resource_group.resource_group_location
 
- #### enable diagnostic setting
- diagnostic_setting_enable  = false
- log_analytics_workspace_id = module.log-analytics.workspace_id
+ #### diagnostic setting
+ log_analytics_workspace_id       = module.log-analytics.workspace_id
  }
   ```
 
@@ -83,10 +80,10 @@ module "log-analytics" {
 |------|-------------|------|---------|:--------:|
 | Metric\_enable | Is this Diagnostic Metric enabled? Defaults to true. | `bool` | `true` | no |
 | category | The name of a Diagnostic Log Category Group for this Resource. | `string` | `null` | no |
-| create\_log\_analytics\_workspace | The Flag for Module Enable or Disabled if it will false it will take `existing_log_analytics_workspace`. | `bool` | `false` | no |
+| create\_log\_analytics\_workspace | The Flag for Module Enable or Disabled if it will false it will take `existing_log_analytics_workspace`. | `bool` | `true` | no |
 | daily\_quota\_gb | The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited) if omitted. | `string` | `"-1"` | no |
 | days | The number of days for which this Retention Policy should apply. | `number` | `"90"` | no |
-| diagnostic\_setting\_enable | n/a | `bool` | `false` | no |
+| diagnostic\_setting\_enable | n/a | `bool` | `true` | no |
 | email\_receiver | One or more email\_receiver blocks as defined below. | `list(any)` | `[]` | no |
 | enabled | Set to false to prevent the module from creating any resources. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
