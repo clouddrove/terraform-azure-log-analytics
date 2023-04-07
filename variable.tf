@@ -33,8 +33,8 @@ variable "managedby" {
 
 variable "enabled" {
   type        = bool
-  description = "Set to false to prevent the module from creating any resources."
   default     = true
+  description = "Set to false to prevent the module from creating any resources."
 }
 
 
@@ -45,14 +45,14 @@ variable "tags" {
 }
 variable "log_analytics_workspace_name" {
   type        = string
-  description = "Name of the Log Analytics Workspace"
   default     = "loganalytics"
+  description = "Name of the Log Analytics Workspace"
 }
 
 variable "log_analytics_workspace_location" {
   type        = string
-  description = "Location of the Workspace"
   default     = "West Us"
+  description = "Location of the Workspace"
 }
 
 variable "resource_group_name" {
@@ -83,15 +83,10 @@ variable "scheduled_query_rules_alert" {
 
 variable "create_log_analytics_workspace" {
   type        = bool
-  default     = false
+  default     = true
   description = "The Flag for Module Enable or Disabled if it will false it will take `existing_log_analytics_workspace`."
 }
 
-#variable "allow_resource_only_permissions" {
-#  type        = bool
-#  default     = true
-#  description = "Specifies if the log Analytics Workspace allow users accessing to data associated with resources they have permission to view, without permission to workspace. Defaults to true."
-#}
 variable "retention_in_days" {
   type        = number
   default     = null
@@ -136,7 +131,7 @@ variable "Metric_enable" {
 }
 variable "diagnostic_setting_enable" {
   type    = bool
-  default = false
+  default = true
 }
 variable "log_analytics_workspace_id" {
   type    = string
