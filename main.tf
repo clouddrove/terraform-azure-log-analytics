@@ -41,7 +41,7 @@ resource "azurerm_monitor_diagnostic_setting" "example" {
     category_group = "AllLogs"
   }
 
-  enabled_log{
+  enabled_log {
     category       = var.category
     category_group = "Audit"
   }
