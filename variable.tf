@@ -38,17 +38,6 @@ variable "enabled" {
 }
 
 
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "A map of tags to add to all resources"
-}
-variable "log_analytics_workspace_name" {
-  type        = string
-  default     = "loganalytics"
-  description = "Name of the Log Analytics Workspace"
-}
-
 variable "log_analytics_workspace_location" {
   type        = string
   default     = "West Us"
@@ -67,20 +56,6 @@ variable "log_analytics_workspace_sku" {
   description = "pecifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, CapacityReservation, and PerGB2018 (new Sku as of 2018-04-03). Defaults to PerGB2018"
 
 }
-
-
-variable "email_receiver" {
-  type        = list(any)
-  default     = []
-  description = "One or more email_receiver blocks as defined below."
-}
-
-variable "scheduled_query_rules_alert" {
-  type        = any
-  default     = {}
-  description = "Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor."
-}
-
 variable "create_log_analytics_workspace" {
   type        = bool
   default     = true
@@ -114,16 +89,7 @@ variable "log_analytics_destination_type" {
   default     = "AzureDiagnostics"
   description = "Possible values are AzureDiagnostics and Dedicated, default to AzureDiagnostics. When set to Dedicated, logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table."
 }
-variable "retention_policy_enabled" {
-  type        = bool
-  default     = false
-  description = "Is this Retention Policy enabled?"
-}
-variable "days" {
-  type        = number
-  default     = "90"
-  description = " The number of days for which this Retention Policy should apply."
-}
+
 variable "Metric_enable" {
   type        = bool
   default     = true
@@ -143,11 +109,7 @@ variable "category" {
   default     = null
   description = " The name of a Diagnostic Log Category Group for this Resource."
 }
-variable "log_enabled" {
-  type        = string
-  default     = true
-  description = " Is this Diagnostic Log enabled? Defaults to true."
-}
+
 variable "storage_account_id" {
   type        = string
   default     = null

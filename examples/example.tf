@@ -1,5 +1,6 @@
 provider "azurerm" {
   features {}
+  subscription_id = "<subscription-id>"
 }
 
 module "resource_group" {
