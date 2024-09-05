@@ -14,8 +14,14 @@
 <a href="https://www.terraform.io">
   <img src="https://img.shields.io/badge/Terraform-v1.1.7-green" alt="Terraform">
 </a>
+<a href="https://github.com/clouddrove/terraform-azure-log-analytics/actions/workflows/tfsec.yml">
+  <img src="https://github.com/clouddrove/terraform-azure-log-analytics/actions/workflows/tfsec.yml/badge.svg" alt="tfsec">
+</a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-APACHE-blue.svg" alt="Licence">
+</a>
+<a href="CHANGELOG.md">
+  <img src="https://img.shields.io/badge/Changelog-blue" alt="Changelog">
 </a>
 
 
@@ -41,6 +47,15 @@
 
 
 
+
+## Prerequisites and Providers
+
+This table contains both Prerequisites and Providers:
+
+| Description   | Name                                       | Version   |
+|:-------------:|:-------------------------------------------:|:---------:|
+| **Prerequisite** | [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html) | >= 1.7.8 |
+| **Provider** | [azure](https://azure.microsoft.com/) | >= 3.39.0 |
 
 
 
