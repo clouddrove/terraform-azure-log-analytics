@@ -51,7 +51,7 @@ description: |-
 
 # How to use this project
 # yamllint disable rule:line-length
-usage: |-
+usage : |-
   ### Simple Example
   Here is an example of how you can use this module in your inventory structure:
   ```hcl
