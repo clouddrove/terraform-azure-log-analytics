@@ -12,7 +12,7 @@ module "labels" {
 
 resource "azurerm_log_analytics_workspace" "main" {
   count                      = var.enabled && var.create_log_analytics_workspace == true ? 1 : 0
-  name                       = format("%s-logs", module.labels.id)
+  name                       = format("%s-law", module.labels.id)
   location                   = var.log_analytics_workspace_location
   resource_group_name        = var.resource_group_name
   sku                        = var.log_analytics_workspace_sku
@@ -24,7 +24,7 @@ resource "azurerm_log_analytics_workspace" "main" {
 }
 resource "azurerm_monitor_diagnostic_setting" "example" {
   count                          = var.enabled && var.diagnostic_setting_enable ? 1 : 0
-  name                           = format("%s-log-analytics-diagnostic-log", module.labels.id)
+  name                           = format("%s-law-diag", module.labels.id)
   target_resource_id             = join("", azurerm_log_analytics_workspace.main[*].id)
   storage_account_id             = var.storage_account_id
   eventhub_name                  = var.eventhub_name

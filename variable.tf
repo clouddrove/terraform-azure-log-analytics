@@ -56,6 +56,7 @@ variable "log_analytics_workspace_sku" {
   description = "pecifies the Sku of the Log Analytics Workspace. Possible values are Free, PerNode, Premium, Standard, Standalone, Unlimited, CapacityReservation, and PerGB2018 (new Sku as of 2018-04-03). Defaults to PerGB2018"
 
 }
+
 variable "create_log_analytics_workspace" {
   type        = bool
   default     = true
@@ -67,6 +68,7 @@ variable "retention_in_days" {
   default     = null
   description = "The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
 }
+
 variable "daily_quota_gb" {
   type        = string
   default     = "-1"
@@ -78,11 +80,13 @@ variable "internet_ingestion_enabled" {
   default     = true
   description = "Should the Log Analytics Workspace support ingestion over the Public Internet? Defaults to true."
 }
+
 variable "internet_query_enabled" {
   type        = bool
   default     = true
   description = "Should the Log Analytics Workspace support querying over the Public Internet? Defaults to true."
 }
+
 #### enable diagnostic setting
 variable "log_analytics_destination_type" {
   type        = string
@@ -95,10 +99,12 @@ variable "Metric_enable" {
   default     = true
   description = "Is this Diagnostic Metric enabled? Defaults to true."
 }
+
 variable "diagnostic_setting_enable" {
   type    = bool
-  default = true
+  default = false
 }
+
 variable "log_analytics_workspace_id" {
   type    = string
   default = null
@@ -115,11 +121,13 @@ variable "storage_account_id" {
   default     = null
   description = "The ID of the Storage Account where logs should be sent."
 }
+
 variable "eventhub_name" {
   type        = string
   default     = null
   description = "Specifies the name of the Event Hub where Diagnostics Data should be sent."
 }
+
 variable "eventhub_authorization_rule_id" {
   type        = string
   default     = null

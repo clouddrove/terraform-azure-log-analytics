@@ -1,6 +1,6 @@
 provider "azurerm" {
   features {}
-  subscription_id = "<subscription-id>"
+  subscription_id = "068245d4-3c94-42fe-9c4d-9e5e1cabc60c"
 }
 
 module "resource_group" {
@@ -14,7 +14,7 @@ module "resource_group" {
 }
 
 module "log-analytics" {
-  source                           = "./../"
+  source                           = "./../../"
   name                             = "app"
   environment                      = "test"
   resource_group_name              = module.resource_group.resource_group_name
