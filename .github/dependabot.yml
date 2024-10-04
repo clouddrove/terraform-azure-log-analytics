@@ -13,4 +13,3 @@ updates:
     directory: "examples" # Location of package manifests
     schedule:
       interval: "weekly"
-
