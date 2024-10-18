@@ -6,7 +6,7 @@
 | category | The name of a Diagnostic Log Category Group for this Resource. | `string` | `null` | no |
 | create\_log\_analytics\_workspace | The Flag for Module Enable or Disabled if it will false it will take `existing_log_analytics_workspace`. | `bool` | `true` | no |
 | daily\_quota\_gb | The workspace daily quota for ingestion in GB. Defaults to -1 (unlimited) if omitted. | `string` | `"-1"` | no |
-| diagnostic\_setting\_enable | n/a | `bool` | `true` | no |
+| diagnostic\_setting\_enable | n/a | `bool` | `false` | no |
 | enabled | Set to false to prevent the module from creating any resources. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
 | eventhub\_authorization\_rule\_id | Specifies the ID of an Event Hub Namespace Authorization Rule used to send Diagnostics Data. | `string` | `null` | no |
